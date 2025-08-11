@@ -7,18 +7,23 @@ const { spawn } = require('child_process');
 let serverProcess;
 
 
+let mainWindow;
+
 const createWindow = () => {
-    const win = new BrowserWindow({
+    mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
         autoHideMenuBar: true,
-        icon: path.join(__dirname, 'assets', 'icon.png'),
+        icon: path.join(__dirname, 'assets', 'icon.ico'),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             contextIsolation: true,
         }
     })
-    win.loadURL("http://192.168.6.208:8069/pos/ui?config_id=1")
+    
+    // Load the startup screen first
+    mainWindow.loadFile('startup.html');
+    
     // win.webContents.openDevTools();
 }
 
@@ -260,5 +265,21 @@ process.on('SIGTERM', async () => {
 });
 ipcMain.handle('get-print-port', () => {
     return dynamicPort;
+});
+
+// Handle loading POS URL from startup screen
+ipcMain.handle('load-pos-url', async (event, url) => {
+    try {
+        console.log('Loading POS URL:', url);
+        
+        // Load the POS URL in the main window
+        await mainWindow.loadURL(url);
+        
+        console.log('POS URL loaded successfully');
+        return { success: true };
+    } catch (error) {
+        console.error('Failed to load POS URL:', error);
+        throw error;
+    }
 });
 

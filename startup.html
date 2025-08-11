@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odoo POS - Setup</title>
+    <link rel="stylesheet" href="startup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="setup-card">
+            <div class="header">
+                <img src="assets/odoo-logo.png" alt="Odoo" class="logo" onerror="this.style.display='none'">
+                <h1>Odoo POS</h1>
+                <p>Point of Sale Desktop Application</p>
+            </div>
+            
+            <div class="form-section">
+                <h2>Connect to your Odoo Instance</h2>
+                <form id="urlForm">
+                    <div class="input-group">
+                        <label for="posUrl">POS URL</label>
+                        <input 
+                            type="url" 
+                            id="posUrl" 
+                            name="posUrl" 
+                            placeholder="https://your-odoo-instance.com/pos/ui?config_id=1"
+                            required
+                            class="odoo-input"
+                        >
+                        <div class="input-help">
+                            Enter the complete URL to your Odoo POS interface
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="odoo-button primary" id="loadButton">
+                        <span class="button-text">Load App</span>
+                        <div class="spinner" style="display: none;"></div>
+                    </button>
+                </form>
+                
+                <div class="examples">
+                    <h3>Example URLs:</h3>
+                    <div class="example-urls">
+                        <div class="example" data-url="http://localhost:8069/pos/ui?config_id=1">
+                            <strong>Local Development:</strong><br>
+                            <code>http://localhost:8069/pos/ui?config_id=1</code>
+                        </div>
+                        <div class="example" data-url="https://demo.odoo.com/pos/ui?config_id=1">
+                            <strong>Demo Instance:</strong><br>
+                            <code>https://demo.odoo.com/pos/ui?config_id=1</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="startup.js"></script>
+</body>
+</html>

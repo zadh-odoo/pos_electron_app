@@ -18,6 +18,9 @@
     "files": [
       "main.js",
       "preload.js",
+      "startup.html",
+      "startup.css",
+      "startup.js",
       "package.json",
       "assets/**/*"
     ],

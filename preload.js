@@ -33,5 +33,10 @@ contextBridge.exposeInMainWorld('printerAPI', {
   }
 });
 
+// API for startup screen
+contextBridge.exposeInMainWorld('electronAPI', {
+  loadPosUrl: (url) => ipcRenderer.invoke('load-pos-url', url)
+});
+
 
 

@@ -1,0 +1,253 @@
+/* Odoo-style startup screen CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #714b67 0%, #5a3d54 50%, #4a3347 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.setup-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(135deg, #714b67, #5a3d54);
+    color: white;
+    text-align: center;
+    padding: 40px 30px;
+}
+
+.header .logo {
+    width: 60px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.form-section {
+    padding: 40px 30px;
+}
+
+.form-section h2 {
+    color: #333;
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 30px;
+}
+
+.input-group label {
+    display: block;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.odoo-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: white;
+    font-family: inherit;
+}
+
+.odoo-input:focus {
+    outline: none;
+    border-color: #714b67;
+    box-shadow: 0 0 0 2px rgba(113, 75, 103, 0.1);
+}
+
+.odoo-input:valid {
+    border-color: #28a745;
+}
+
+.input-help {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+.odoo-button {
+    width: 100%;
+    background: linear-gradient(135deg, #714b67, #5a3d54);
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.odoo-button:hover {
+    background: linear-gradient(135deg, #5a3d54, #4a3347);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(113, 75, 103, 0.3);
+}
+
+.odoo-button:active {
+    transform: translateY(0);
+}
+
+.odoo-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.examples {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+}
+
+.examples h3 {
+    color: #666;
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.example-urls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.example {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+}
+
+.example:hover {
+    background: #e9ecef;
+    border-color: #714b67;
+}
+
+.example strong {
+    color: #333;
+    font-size: 14px;
+}
+
+.example code {
+    color: #714b67;
+    font-family: 'Courier New', Monaco, monospace;
+    font-size: 13px;
+    word-break: break-all;
+    line-height: 1.4;
+    display: block;
+    margin-top: 5px;
+}
+
+/* Loading state */
+.loading .button-text {
+    opacity: 0.7;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .header {
+        padding: 30px 20px;
+    }
+    
+    .header h1 {
+        font-size: 2em;
+    }
+    
+    .form-section {
+        padding: 30px 20px;
+    }
+    
+    .example-urls {
+        gap: 10px;
+    }
+    
+    .example {
+        padding: 12px;
+    }
+}
+
+/* Error states */
+.error {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.1) !important;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
