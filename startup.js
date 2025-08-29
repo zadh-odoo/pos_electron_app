@@ -1,4 +1,3 @@
-// Startup screen JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('urlForm');
     const urlInput = document.getElementById('posUrl');
